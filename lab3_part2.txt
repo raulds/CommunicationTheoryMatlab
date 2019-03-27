@@ -1,0 +1,68 @@
+clear;
+clc;
+close all;
+
+% exercicio 1
+A = 5;
+T = 10;
+f = 1 / T;
+%t = [0: T/100 : 5*T]; % tempo, vetor tempo
+%k = 0;
+
+x = [-10:0.01:10];
+y = rectangularPulse(x);
+figure(1)
+plot(x,y)
+
+%letra b
+z = rectangularPulse(A*x);
+figure(2)
+plot(x,z);
+
+%letra c
+A = 5;
+T = 10;
+f = 1 / T;
+X = f * T;
+f = [-10:0.01:10];
+z = []
+
+G =  A * T * sinc (f*T);
+
+% Plotando o G
+figure(3);
+plot(f, G);
+
+% Plotando o módulo go G
+mod = abs(G);
+
+figure(4)
+plot(f, mod)
+
+%plotando G em fases
+ang = angle(G);
+figure(5)
+plot(f, ang)
+
+% letra (D)
+% copia das operações acima, porém as variáveis serão sobrescritas
+A = 1;
+f = [-5e6:1:5e6];
+%T = 1/f;
+%T = 1
+G =  A * (1/f) * sinc (f*(1/f));
+
+% Plotando o G
+figure(3);
+plot(f, G);
+
+% Plotando o módulo go G
+mod = abs(G);
+
+figure(4)
+plot(f, mod)
+
+%plotando G em fases
+ang = angle(G);
+figure(5)
+plot(f, ang)
